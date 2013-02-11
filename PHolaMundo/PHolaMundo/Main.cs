@@ -1,8 +1,8 @@
 using System;
 
-namespace PHolaMundo
+namespace Serpis.Ed
 {
-	class MainClass
+	public class MainClass
 	{
 		public static void Main (string[] args)
 		{
