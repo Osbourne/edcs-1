@@ -51,28 +51,28 @@ namespace Serpis.Ed
 			a = b;
 			b = temp;
 		}
-		
-		public static void SelectionSort(int[] v){
-			selectionSortV2 (v);
-		}
-		
-		private static void selectionSortV1(int[] v){
-			int count = v.Length;
-			for (int selectedIndex = 0; selectedIndex < count - 1; selectedIndex++) {
-				int indexOfMin = selectedIndex;
-				for (int index = selectedIndex + 1; index < count; index++)
-					if (v[index] < v[indexOfMin])
-						indexOfMin = index;
-				int temp = v[selectedIndex];
-				v[selectedIndex] = v[indexOfMin];
-				v[indexOfMin] = temp;
-			}
-		}
 
 		private static void selectionSortV2(int[] v){
 			for (int selectedIndex = 0; selectedIndex < v.Length - 1; selectedIndex++) {
 				int indexOfMin = IndexOfMin(v, selectedIndex);
 				Swap<int>(ref v[selectedIndex], ref v[indexOfMin]);				
+			}
+		}
+
+		public static void SelectionSort(int[] v){
+			selectionSortV1<int>(v);
+		}
+		
+		private static void selectionSortV1<T>(T[] v) where T : IComparable<T>{
+			int count = v.Length;
+			for (int selectedIndex = 0; selectedIndex < count - 1; selectedIndex++) {
+				int indexOfMin = selectedIndex;
+				for (int index = selectedIndex + 1; index < count; index++)
+					if (v[index].CompareTo(v[indexOfMin]) < 0)
+						indexOfMin = index;
+				T temp = v[selectedIndex];
+				v[selectedIndex] = v[indexOfMin];
+				v[indexOfMin] = temp;
 			}
 		}
 	}
